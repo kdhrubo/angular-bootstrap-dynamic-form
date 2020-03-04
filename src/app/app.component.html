@@ -1,0 +1,49 @@
+<div class="container">
+    <form [formGroup]="form">
+      <div class="form-row"><h4>{{formData?.title}}</h4></div>
+
+
+      <ng-container class="form-row" *ngFor="let section of formData?.sections">
+
+        <h5>{{section.header}}</h5>
+        
+        <div class="form-row">
+
+         <ng-template ngFor let-field [ngForOf]="section?.fields"> 
+
+           <ng-container [ngSwitch]="field.controlType">
+
+              <!-- handling text type inputs -->
+              <ng-template [ngSwitchCase]="'text'">
+                <div [class]="field.col">
+                  
+                  <label [for]="field.controlName"> {{field.label}}</label>
+                  <input [type]="field.valueType" [name]="field.controlName" class="form-control" [formControlName]="field.controlName"/>
+                  
+                   -->  
+                  <!--
+                  <div class="error" *ngIf="form.get(input.controlName).invalid && 
+                                            (form.get(input.controlName).dirty || form.get(input.controlName).touched)">
+                    <div *ngIf="form.get(input.controlName).errors.required">Input required</div>
+                    <div *ngIf="form.get(input.controlName).errors.minlength">Minimum length is {{input.validators.minlength}}</div>
+                  </div>
+                  -->
+                  
+                </div>
+              </ng-template>   
+
+
+           </ng-container>  
+
+
+         </ng-template>  
+
+         
+
+        </div>  
+
+      </ng-container> 
+
+  </form>
+  
+</div>
